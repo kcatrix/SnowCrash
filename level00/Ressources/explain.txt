@@ -1,0 +1,11 @@
+find / -user flag00 2> /dev/null
+
+cat /usr/sbin/john
+cdiiddwpgswtgt
+
+Faisons-le simplement en comptant +11 pour chaque lettre de ton message :c (+11) 
+$\rightarrow$ nd (+11) $\rightarrow$ oi (+11) $\rightarrow$ ti (+11) $\rightarrow$ td (+11) 
+$\rightarrow$ od (+11) $\rightarrow$ o(On a déjà "nottoo" -> "not too")w (+11) 
+$\rightarrow$ h (w, x, y, z, a, b, c, d, e, f, g, h... on recommence au début)p (+11) $\rightarrow$ ag 
+(+11) $\rightarrow$ rs (+11) $\rightarrow$ d(On a "hard")w (+11) $\rightarrow$ ht (+11) $\rightarrow$ eg (+11) 
+$\rightarrow$ rt (+11) $\rightarrow$ e(On a "here")Résultat finalnottoohardhere
