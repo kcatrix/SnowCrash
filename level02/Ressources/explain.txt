@@ -1,3 +1,3 @@
-cat /etc/passwd
+scp -P 4242 level02@127.0.0.1:level02.pcap .
+sudo wireshark level02.pcap
 
-brut force avec john
