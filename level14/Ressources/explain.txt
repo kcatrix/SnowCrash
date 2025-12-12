@@ -1,0 +1,18 @@
+grep flag14 /etc/passwd
+
+gdb /bin/getflag
+
+break ptrace
+break getuid
+
+run
+
+return (int)0
+
+continue
+
+step
+
+set $eax=3014
+
+continue

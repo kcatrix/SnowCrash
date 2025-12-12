@@ -1,3 +1,39 @@
-cat /etc/passwd
+Level 01 : La Faille /etc/passwd
+Objectif : Trouver le mot de passe de l'utilisateur flag01.
 
-brut force avec john
+1. L'Exploration (Reconnaissance)
+Quand tu arrives sur le système, tu ne trouves rien dans le dossier courant. Le réflexe "SysAdmin" est de regarder les utilisateurs du système.
+
+La commande clé est :
+
+cat /etc/passwd
+Pourquoi ce fichier ? C'est la base de données des utilisateurs sous Linux.
+
+Ce qu'on y trouve (L'anomalie) : Normalement, une ligne ressemble à ça : root:x:0:0:root:/root:/bin/bash Le x signifie "Le mot de passe est caché dans /etc/shadow".
+
+Mais pour flag01, on trouve ceci : flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+
+Au lieu du x, il y a une chaîne de caractères : 42hDRfypTqqnw.
+
+2. La Vulnérabilité (Théorie)
+C'est une faille de mauvaise configuration de sécurité (Legacy). Dans les très vieux systèmes Unix, les mots de passe (hashés) étaient stockés directement dans /etc/passwd, qui est lisible par tout le monde (world-readable). Aujourd'hui, on utilise /etc/shadow (lisible uniquement par root) pour stocker les hashs. Ici, l'administrateur a fait l'erreur de laisser le hash accessible à tous.
+
+3. L'Exploitation (Bruteforce)
+La chaîne 42hDRfypTqqnw n'est pas le mot de passe en clair, c'est un Hash DES (Data Encryption Standard). On ne peut pas le "déchiffrer" (ce n'est pas réversible), on doit le "casser" (cracker).
+
+La méthode : L'attaque par dictionnaire ou Bruteforce. On prend un mot, on le hashe, et on compare. Si ça matche, on a trouvé.
+
+L'outil : John the Ripper (ou Hashcat).
+
+Les commandes à retenir :
+
+On copie la ligne dans un fichier sur notre machine hôte :
+
+echo "flag01:42hDRfypTqqnw:..." > crack_me.txt
+On lance John :
+
+john crack_me.txt
+On affiche le résultat :
+
+john --show crack_me.txt
+Résultat : Le mot de passe est abcdefg (ou la chaîne trouvée par John).
