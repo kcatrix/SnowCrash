@@ -1,1 +1,4 @@
-python -c "print ''.join([chr(ord(c) - i) for i, c in enumerate(open('token').read().strip())])"
+python
+data=open("token").read()
+for i, c in enumerate(data):
+    print chr(ord(c) - i),
